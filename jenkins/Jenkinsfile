@@ -13,7 +13,7 @@ pipeline {
 						 
 							Script{
 							
-								if( params.BRANCH == 'master') {
+								if(params.BRANCH == 'master') {
 								   
 								   git branch: params.BRANCH
 								   

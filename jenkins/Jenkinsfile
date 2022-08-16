@@ -2,9 +2,7 @@ pipeline {
 	agent { label 'master' }
         stages{
             stage ( 'TEST1' ) {
-		        when {
-                    branch 'main' 
-                    }
+		        
 					    steps { 
 						    sh '''
 							   echo "this is executed from TEST1 stage and branch is master"
@@ -13,9 +11,7 @@ pipeline {
 							  }
 							}
             stage ( 'TEST2' ) {
-		        when {
-			        branch 'main'
-				    }
+		        
 					    steps {
 				            sh '''
 				                echo " this is executed from TEST2 stage and branch is master "

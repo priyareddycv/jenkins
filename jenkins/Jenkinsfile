@@ -6,16 +6,13 @@ pipeline {
 		choice(name: 'BRANCH', choices: ['main' , 'branch1', 'master'], description: 'Select a branch')
 				  
 				}
-			
-			stages{
+			  stages{
 				stage ( 'TEST1' ) {
 						steps { 
-						 
-							Script{
-							
-								if(params.BRANCH == 'master') 
+						      Script{
+						            if(params.BRANCH == 'master') 
 								{
-								   git branch: params.BRANCH
+								  git branch: params.BRANCH
 								   sh '''
 								   echo "this is executed from TEST1 stage and branch is master"
 								   cat README.md
@@ -25,13 +22,12 @@ pipeline {
 								  }
 								}
 				  stage ( 'TEST2' ) {
-					
-							steps {
-								sh '''
-									echo " this is executed from TEST2 stage and branch is master "
-									cat README.md
-								   '''
-								}
-							}
-						} 
-					}
+					      steps {
+						      sh '''
+						      echo " this is executed from TEST2 stage and branch is master "
+						      cat README.md
+						         '''
+					                }
+				                      }
+						    } 
+					           }

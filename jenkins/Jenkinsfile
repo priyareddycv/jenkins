@@ -1,17 +1,27 @@
 pipeline {
-    agent { label 'slave2' }
-    stages {
-        stage('Build') {
-            steps {
-                    git branch: 'master', url: 'https://github.com/jenkins-docs/simple-java-maven-app.git'
-                    sh '''
-                        #!/bin/bash 
-                        pwd 
-                        ls
-                        echo "This is a BUILD stage"
-                        mvn clean package
-                    ''' 
-            }
-        }
-    }
-}
+    agent any
+        stages{
+            stage ( 'TEST1' ) {
+		        when {
+                    branch 'master' 
+                    }
+					    steps { 
+						    sh '''
+							   echo "this is executed from TEST1 stage and branch is master"
+							   cat README.md
+				               '''
+							  }
+							}
+            stage ( 'TEST2' ) {
+		        when {
+			        branch 'master'
+				    }
+					    steps {
+				            sh '''
+				                echo " this is executed from TEST2 stage and branch is master "
+								cat README.md
+				               '''
+                            }
+						}
+                    } 
+				}

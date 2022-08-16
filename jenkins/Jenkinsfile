@@ -1,23 +1,38 @@
 pipeline {
-	agent { label 'master' }
-        stages{
-            stage ( 'TEST1' ) {
-		        
-					    steps { 
-						    sh '''
-							   echo "this is executed from TEST1 stage and branch is master"
-							   cat README.md
-				               '''
-							  }
-							}
-            stage ( 'TEST2' ) {
-		        
-					    steps {
-				            sh '''
-				                echo " this is executed from TEST2 stage and branch is master "
-								cat README.md
-				               '''
-                            }
-						}
-                    } 
+		agent { label 'master' }
+		
+		parameters {
+		
+		choice(name: 'BRANCH', choices: ['main' , 'branch1', 'master'], description: 'Select a branch')
+				  
 				}
+			
+			stages{
+				stage ( 'TEST1' ) {
+						steps { 
+						 
+							Script{
+							
+								if( params.BRANCH == 'master') {
+								   
+								   git branch: params.BRANCH
+								   
+								   sh '''
+								   echo "this is executed from TEST1 stage and branch is master"
+								   cat README.md
+								   '''
+									 }
+								   }
+								  }
+								}
+				stage ( 'TEST2' ) {
+					
+							steps {
+								sh '''
+									echo " this is executed from TEST2 stage and branch is master "
+									cat README.md
+								   '''
+								}
+							}
+						} 
+					}

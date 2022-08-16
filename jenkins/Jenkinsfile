@@ -3,25 +3,19 @@ pipeline {
    agent any 
     
     environment{
-        GIT_URL = '	https://github.com/priyareddycv/central-repo-java.git '
+        GIT_URL = 'https://github.com/priyareddycv/jenkins.git'
         }
-   	
-    
     stages{
-            stage ( 'TEST1' ) {
+        stage ( 'TEST1' ) {
 		        when {
-                    branch 'master' 
-                    }
-				        steps { 
-				
-				            sh '''
-				    
-					            echo "this is executed from TEST1 stage and branch is master"
-				   
-				            '''
-				            }
-				
-				       }
+                        branch 'master' 
+                        }
+		           steps { 
+				sh '''
+			             echo "this is executed from TEST1 stage and branch is master"
+			           '''
+				  }
+				}
         
 		    stage ( 'TEST2' ) {
 		
@@ -30,10 +24,9 @@ pipeline {
 				    }
 					    steps {
 				
-				            sh '''
-				                echo " this is executed from TEST2 stage and branch is master "
-				               '''
-                            }
-		               }
-        }
-    }
+				            sh  '''
+					          echo " this is executed from TEST2 stage and branch is master "
+				          }
+					 }
+			}
+                       }

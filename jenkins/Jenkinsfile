@@ -7,13 +7,16 @@ pipeline {
         }
     stages{
         stage ( 'TEST1' ) {
-		        when {
+		        
+		     steps { 
+				   
+			when {
                         branch 'master' 
-                        }
-		           steps { 
-				sh '''
-			             echo "this is executed from TEST1 stage and branch is master"
-			           '''
+                        }	  
+				
+			  sh '''
+			        echo "this is executed from TEST1 stage and branch is master"
+			      '''
 				  }
 				}
         
@@ -25,7 +28,10 @@ pipeline {
 					    steps {
 				
 				            sh  '''
-					          echo " this is executed from TEST2 stage and branch is master "
+					       
+					       echo " this is executed from TEST2 stage and branch is master "
+					       
+					       '''
 				          }
 					 }
 			}

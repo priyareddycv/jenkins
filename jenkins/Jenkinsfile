@@ -2,13 +2,10 @@ pipeline {
     agent any
         stages{
             stage ( 'TEST1' ) {
-		        
+		        when {
+                    branch 'master' 
+                    }
 					    steps { 
-						    
-						    
-						    when {
-                                                 branch 'master' 
-                                                       }
 						    sh '''
 							   echo "this is executed from TEST1 stage and branch is master"
 							   cat README.md
@@ -16,16 +13,15 @@ pipeline {
 							  }
 							}
             stage ( 'TEST2' ) {
-		         steps {
-				  when {
+		        when {
 			        branch 'master'
-				    }           
-				 
-				 sh '''
-				   echo " this is executed from TEST2 stage and branch is master "
-				    cat README.md  
-				   '''
+				    }
+					    steps {
+				            sh '''
+				                echo " this is executed from TEST2 stage and branch is master "
+								cat README.md
+				               '''
                             }
-			}
+						}
                     } 
-		}
+				}

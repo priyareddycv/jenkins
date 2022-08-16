@@ -13,19 +13,18 @@ pipeline {
 						 
 							Script{
 							
-								if(params.BRANCH == 'master') {
-								   
+								if(params.BRANCH == 'master') 
+								{
 								   git branch: params.BRANCH
-								   
 								   sh '''
 								   echo "this is executed from TEST1 stage and branch is master"
 								   cat README.md
 								   '''
-									 }
+								 }
 								   }
 								  }
 								}
-				stage ( 'TEST2' ) {
+				  stage ( 'TEST2' ) {
 					
 							steps {
 								sh '''

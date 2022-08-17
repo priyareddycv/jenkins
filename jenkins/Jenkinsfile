@@ -1,10 +1,10 @@
 pipeline {
-    agent any
+    agent { label 'master'}
     parameters {
         choice(name: 'BRANCH', choices: ['main' , 'branch1', 'master'], description: 'Select a branch')
                 }
     environment {
-                GIT_REPO = "https://github.com/monica261195/jenkins-qa"
+                GIT_REPO = "https://github.com/priyareddycv/jenkins.git"
                 }
     stages {
         stage ("Test1") {

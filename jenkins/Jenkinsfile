@@ -1,18 +1,14 @@
 pipeline {
     agent { label 'master'}
-   environment {
-                GIT_REPO = "https://github.com/priyareddycv/jenkins.git"
-                }
+   
     stages {
         stage ("Test") {
             steps {
-                script {
-                        git branch: params.BRANCH, url: env.GIT_REPO
-                        sh 'echo "This is a Test stage using main branch"'
-                   }
-                }
-            }
-        }
-        
-    }  
-
+                
+                        sh '''
+                        cat README.md
+                        '''
+                      }
+               }
+         }
+   }

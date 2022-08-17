@@ -45,7 +45,9 @@ pipeline {
                     {
                       git branch: params.BRANCH, url: env.GIT_REPO
                        echo " this is ${params.BRANCH} branch"
-                       cat README.md
+                       sh '''
+                        cat README.md
+                        '''
                     }
                 }
                 

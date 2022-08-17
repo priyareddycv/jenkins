@@ -13,7 +13,10 @@ pipeline {
                     if(params.BRANCH == "master")
                     {
                         git branch: params.BRANCH, url: env.GIT_REPO
-                        sh 'echo "This is a Test1 stage using master branch"'
+                        sh '''
+                        echo "This is a Test1 stage using master branch"
+                        cat README.md
+                        '''
                      } else { 
                         echo "Skip Test1 stage"
                         //exit 1
@@ -27,7 +30,10 @@ pipeline {
                     if(params.BRANCH == "master")
                     {
                         git branch: params.BRANCH, url: env.GIT_REPO
-                        echo "This is a Test2 stage using master branch" 
+                        sh '''
+                        echo "This is a Test2 stage using master branch"
+                        cat README.md
+                        '''
                     } else { 
                         echo "This is not master branch"
                         //exit 1

@@ -10,14 +10,14 @@ pipeline {
         stage ("Test1") {
             steps {
                 script {
-                    if(params.BRANCH == 'master')
-                    {
+                    //if(params.BRANCH == 'master')
+                    //{
                         git branch: params.BRANCH, url: env.GIT_REPO
                         sh 'echo "This is a Test1 stage using master branch"'
-                    } else { 
+                    //} else { 
                         echo "Skip Test1 stage"
-                        exit 1
-                    }
+                      //  exit 1
+                    //}
                 }
             }
         }

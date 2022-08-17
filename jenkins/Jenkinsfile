@@ -41,10 +41,11 @@ pipeline {
             {
                script 
                 {
-                  if(params.BRANCH == "main" or params.BRANCH == "branch1")
+                  if(params.BRANCH == "main" )
                     {
                       git branch: params.BRANCH, url: env.GIT_REPO
-                        echo " this is ${params.BRANCH} branch"
+                       echo " this is ${params.BRANCH} branch"
+                       cat README.md
                     }
                 }
                 

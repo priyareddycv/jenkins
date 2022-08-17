@@ -35,5 +35,23 @@ pipeline {
                 }
             }
         }
-    }  
+        stage ("TEST3")
+        {
+            steps
+            {
+               script 
+                {
+                  if(params.BRANCH == "main" or params.BRANCH == "branch1")
+                    {
+                      git branch: params.BRANCH, url: env.GIT_REPO
+                        echo " this is ${params.BRANCH} branch"
+                    }
+                }
+                
+            }
+        
+        }
+        
+    }
+    
 }
